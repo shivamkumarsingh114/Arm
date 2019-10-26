@@ -1,0 +1,26 @@
+ 	
+	
+	AREA appcode, CODE, READONLY
+
+	EXPORT __main
+	ENTRY
+
+__main FUNCTION
+	MOV R1, #1 ;   MOVE 1 TO R1 . 
+	CMP R1, #2 ;   COMPARE R1 WITH 2.
+	ITT LT      ;  IF-THEN FOR LESS THAN.	
+	MOVLT R2,#2 ;  
+	IT LT      ; IF-THEN NESTED. NOT POSSIBLE AS AN IT BLOCK MUST NOT
+				;CONTAIN ANOTHER IT BLOCK. UNPREDICTABLE ERROR.
+	MOVLT R3,#4    
+stop B stop; STOPS PROG.  
+	ENDFUNC
+	END	
+	
+	
+	
+	
+	
+	
+	
+	
