@@ -1,0 +1,102 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         
+    2 00000000         
+    3 00000000                 AREA             appcode, CODE, READONLY
+    4 00000000         
+    5 00000000                 EXPORT           __main
+    6 00000000                 ENTRY
+    7 00000000         
+    8 00000000         __main  FUNCTION
+    9 00000000         
+   10 00000000 F04F 0514       MOV              R5,#20      ;  MOVE A VALUE TO 
+                                                            R5. 
+   11 00000004 F04F 0608       MOV              R6,#8       ;  MOVE A VALUE TO 
+                                                            R6.
+   12 00000008 42B5            CMP              R5,R6       ;  COMPARE.
+   13 0000000A D005            BEQ              OUTPUT      ; IF EQUAL FLAG IS 
+                                                            HIGH, JUMP TO OUTPU
+                                                            T DIRECTLY.
+   14 0000000C         
+   15 0000000C         
+   16 0000000C 42B5    REDUCTION
+                               CMP              R5,R6       ;     COMPARE.
+   17 0000000E BFCC            ITE              GT          ;       IF R5>R6 TH
+                                                            EN FLAG WOULD BE HI
+                                                            GH.
+   18 00000010 1BAD            SUBGT            R5,R5,R6    ;   IF HIGH, SUBTRA
+                                                            CT R5 AND R6 VALUE 
+                                                            AND STORE IN R5.
+   19 00000012 1B76            SUBLE            R6,R6,R5    ;   ELSE DO THE OPP
+                                                            OSITE.
+   20 00000014 42B5            CMP              R5,R6       ;        COMPARING 
+                                                            TO DET THE FLAGS AG
+                                                            AIN.
+   21 00000016 D1F9            BNE              REDUCTION   ;IF NOT EQUAL TO ZE
+                                                            RO.  
+   22 00000018         OUTPUT
+   23 00000018         
+   24 00000018         ; OUTPUT REFLECTS IN R5 REGISTER.
+   25 00000018         
+   26 00000018 E7FE    stop    B                stop        ; STOPS PROG.  
+   27 0000001A                 ENDFUNC
+   28 0000001A                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=.\objects\first.d -o.\objects\first.o -I.\RTE\_Target_1 -IC:\Us
+ers\Shivam\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include -IC:\User
+s\Shivam\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device
+\ST\STM32F4xx\Include --predefine="__EVAL SETA 1" --predefine="__UVISION_VERSIO
+N SETA 528" --predefine="_RTE_ SETA 1" --predefine="STM32F407xx SETA 1" --list=
+.\listings\first.lst first.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+OUTPUT 00000018
+
+Symbol: OUTPUT
+   Definitions
+      At line 22 in file first.s
+   Uses
+      At line 13 in file first.s
+Comment: OUTPUT used once
+REDUCTION 0000000C
+
+Symbol: REDUCTION
+   Definitions
+      At line 16 in file first.s
+   Uses
+      At line 21 in file first.s
+Comment: REDUCTION used once
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 8 in file first.s
+   Uses
+      At line 5 in file first.s
+Comment: __main used once
+appcode 00000000
+
+Symbol: appcode
+   Definitions
+      At line 3 in file first.s
+   Uses
+      None
+Comment: appcode unused
+stop 00000018
+
+Symbol: stop
+   Definitions
+      At line 26 in file first.s
+   Uses
+      At line 26 in file first.s
+Comment: stop used once
+5 symbols
+340 symbols in table
